@@ -24,7 +24,6 @@ if(!localStorage.getItem('gt_pageview_once')){
   localStorage.setItem('gt_pageview_once','1');
 }
 </script>
-<!-- ================= END META PIXEL ================= -->
 
 <style>
 *{box-sizing:border-box}
@@ -115,6 +114,7 @@ background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
 box-shadow:0 15px 35px rgba(102,126,234,.4),0 5px 15px rgba(0,0,0,.3);
 animation:glowPulse 2.8s ease-in-out infinite;
 transition:all .3s ease;position:relative;overflow:hidden;
+cursor:pointer;
 }
 .join-btn:hover{
 transform:translateY(-3px);box-shadow:0 20px 45px rgba(102,126,234,.5);
@@ -125,6 +125,11 @@ background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
 transition:left .5s;
 }
 .join-btn:hover::before{left:100%;}
+.join-btn.subscribed{
+opacity:0.7;
+background:linear-gradient(135deg,#28a745,#20c997);
+pointer-events:none;
+}
 
 .live{
 margin:15px 0;font-size:20px;font-weight:800;
@@ -176,7 +181,8 @@ border-left:3px solid #f39c12;
     </ul>
   </div>
 
-  <a class="join-btn" href="#" onclick="trackTelegramSubscribe()">
+  <!-- ✅ ZERO INLINE JS - Pure data attributes -->
+  <a class="join-btn" href="#" data-channel="yjwXrw6B4lRhMjI1" id="joinTelegram">
     🚀 JOIN OUR TELEGRAM NOW
   </a>
 
@@ -193,17 +199,77 @@ border-left:3px solid #f39c12;
   </div>
 </div>
 
-<!-- ================= SUBSCRIBE EVENT ================= -->
+<!-- 🚫 BULLETPROOF - ZERO DUPLICATES FOREVER -->
 <script>
-function trackTelegramSubscribe(){
-  if(!localStorage.getItem('gt_tg_subscribed')){
-    fbq('track','Subscribe',{platform:'telegram'});
-    localStorage.setItem('gt_tg_subscribed','1');
+(function(){
+  'use strict';
+  
+  // Triple-layer duplicate protection
+  const SUB_KEY = 'gt_tg_subscribed';
+  const EVENT_PREFIX = 'gt_sub_';
+  
+  // Check if already subscribed (Layer 1: localStorage)
+  if(localStorage.getItem(SUB_KEY)) {
+    updateButtonState(true);
+    return;
   }
-  setTimeout(function(){
-    window.location.href = "https://t.me/+yjwXrw6B4lRhMjI1";
-  }, 50);
-}
+  
+  // Check current session (Layer 2: sessionStorage)
+  const sessionEvent = sessionStorage.getItem('last_event_id');
+  if(sessionEvent && sessionEvent.startsWith(EVENT_PREFIX)) {
+    updateButtonState(true);
+    return;
+  }
+  
+  const joinBtn = document.getElementById('joinTelegram');
+  
+  joinBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    // FINAL CHECK before firing (Layer 3)
+    if(localStorage.getItem(SUB_KEY)) {
+      goToTelegram();
+      return;
+    }
+    
+    // Generate UNIQUE eventID (Meta deduplication)
+    const eventID = EVENT_PREFIX + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    // Fire Subscribe EXACTLY ONCE
+    if(typeof fbq !== 'undefined') {
+      fbq('track', 'Subscribe', {
+        value: 50,
+        currency: 'INR',
+        content_name: 'Gujarati Trader Telegram'
+      }, { eventID: eventID });
+    }
+    
+    // Lock forever across ALL sessions
+    localStorage.setItem(SUB_KEY, '1');
+    sessionStorage.setItem('last_event_id', eventID);
+    
+    updateButtonState(true);
+    goToTelegram();
+  });
+  
+  function updateButtonState(subscribed) {
+    const btn = document.getElementById('joinTelegram');
+    if(subscribed) {
+      btn.classList.add('subscribed');
+      btn.innerHTML = '✅ ALREADY SUBSCRIBED';
+    }
+  }
+  
+  function goToTelegram() {
+    const invite = document.getElementById('joinTelegram').dataset.channel;
+    window.open(`tg://join/?invite=${invite}`, '_blank');
+    setTimeout(() => {
+      window.open(`https://t.me/+${invite}`, '_blank');
+    }, 500);
+  }
+  
+})();
 </script>
 
 </body>
