@@ -5,25 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gujarati Trader</title>
 
-<!-- ================= FIXED META PIXEL ================= -->
+<!-- ================= META PIXEL (SAME ID) ================= -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+!function(f,b,e,v,n,t,s){
+if(f.fbq)return;
+n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
+if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];
+t=b.createElement(e);t.async=!0;
+t.src=v;
+s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)
+}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
 fbq('init', '3057038111143871');
-
-/* ✅ PageView only ONCE per device */
-if(!localStorage.getItem('gt_pageview_once')){
-  fbq('track','PageView');
-  localStorage.setItem('gt_pageview_once','1');
-}
 </script>
+
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=3057038111143871&ev=PageView&noscript=1"/>
+</noscript>
 
 <style>
 *{box-sizing:border-box}
@@ -41,7 +44,6 @@ overflow-x:hidden;
 max-width:420px;
 margin:auto;
 padding:30px 20px 50px;
-position:relative;
 }
 
 @keyframes glowPulse{
@@ -57,112 +59,92 @@ position:relative;
 .logo-wrap{
 margin:25px 0 20px;
 display:flex;justify-content:center;
-perspective:1000px;
 }
 .logo-gold{
 width:160px;height:160px;border-radius:50%;
 padding:4px;background:linear-gradient(135deg,#f4d03f,#f39c12,#f4d03f);
-box-shadow:0 15px 35px rgba(244,208,63,.4);
-animation:glowPulse 2.5s ease-in-out infinite;
-transform-style:preserve-3d;
-transition:transform .3s ease;
+animation:glowPulse 2.5s infinite;
 }
-.logo-gold:hover{transform:rotateY(10deg) rotateX(10deg);}
 .logo-gold img{
 width:100%;height:100%;border-radius:50%;
-background:linear-gradient(135deg,#1a1a2e,#16213e);
-filter:drop-shadow(0 2px 8px rgba(0,0,0,.5));
 }
 
 h1{
 margin:20px 0 10px;
 font-size:32px;font-weight:900;
-letter-spacing:2px;background:linear-gradient(135deg,#f4d03f,#f39c12);
--webkit-background-clip:text;-webkit-text-fill-color:transparent;
-background-clip:text;
-text-shadow:0 0 20px rgba(244,208,63,.5);
-animation:float 4s ease-in-out infinite;
+background:linear-gradient(135deg,#f4d03f,#f39c12);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:float 4s infinite;
 }
 .sub{
 font-size:15px;color:#c0a375;
-font-weight:500;letter-spacing:1px;
-text-shadow:0 1px 3px rgba(0,0,0,.5);
 margin-bottom:25px;
 }
 
 .info-box{
-margin:25px 0;background:linear-gradient(145deg,#1a1a2e,#16213e);
-border-radius:20px;padding:20px 22px;
-text-align:left;border:1px solid rgba(244,208,63,.2);
-box-shadow:0 10px 30px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.1);
-backdrop-filter:blur(10px);
+margin:25px 0;
+background:linear-gradient(145deg,#1a1a2e,#16213e);
+border-radius:20px;
+padding:20px 22px;
+text-align:left;
 }
-.info-box h3{margin:0 0 15px 0;font-size:18px;color:#f4d03f;font-weight:700}
-.info-box li{
-margin:12px 0;font-size:15px;
-opacity:.9;transition:opacity .3s ease;
-}
-.info-box li:hover{opacity:1;}
-.info-box li::marker{color:#f39c12;}
+.info-box h3{margin-bottom:15px;color:#f4d03f}
+.info-box li{margin:12px 0;font-size:15px}
 
 .join-btn{
-margin:30px auto 20px;display:block;
-width:100%;max-width:380px;padding:20px 30px;
-font-size:20px;font-weight:900;border-radius:25px;
-color:#fff;text-decoration:none;
-background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
-box-shadow:0 15px 35px rgba(102,126,234,.4),0 5px 15px rgba(0,0,0,.3);
-animation:glowPulse 2.8s ease-in-out infinite;
-transition:all .3s ease;position:relative;overflow:hidden;
+margin:30px auto 20px;
+display:block;
+width:100%;
+max-width:380px;
+padding:20px;
+font-size:20px;
+font-weight:900;
+border-radius:25px;
+color:#fff;
+text-decoration:none;
+background:linear-gradient(135deg,#667eea,#764ba2);
+animation:glowPulse 2.8s infinite;
 cursor:pointer;
-}
-.join-btn:hover{
-transform:translateY(-3px);box-shadow:0 20px 45px rgba(102,126,234,.5);
-}
-.join-btn::before{
-content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
-background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
-transition:left .5s;
-}
-.join-btn:hover::before{left:100%;}
-.join-btn.subscribed{
-opacity:0.7;
-background:linear-gradient(135deg,#28a745,#20c997);
-pointer-events:none;
 }
 
 .live{
-margin:15px 0;font-size:20px;font-weight:800;
-color:#f4d03f;text-shadow:0 0 15px rgba(244,208,63,.6);
-animation:float 3s ease-in-out infinite;
+margin:15px 0;
+font-size:20px;
+font-weight:800;
+color:#f4d03f;
 }
 
 .client-box{
-margin:20px auto;background:linear-gradient(145deg,#1a1a2e,#16213e);
-border-radius:20px;padding:20px;max-width:380px;
-border:1px solid rgba(244,208,63,.2);
-box-shadow:0 10px 30px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.1);
-backdrop-filter:blur(10px);
+margin:20px auto;
+background:linear-gradient(145deg,#1a1a2e,#16213e);
+border-radius:20px;
+padding:20px;
+max-width:380px;
 }
 .profit{
-font-size:24px;font-weight:900;
-background:linear-gradient(135deg,#00ff88,#00cc6a);
--webkit-background-clip:text;-webkit-text-fill-color:transparent;
-margin-bottom:8px;
+font-size:24px;
+font-weight:900;
+color:#00ff88;
 }
-.small{font-size:13px;color:#9aa0a6;opacity:.8}
+.small{font-size:13px;color:#9aa0a6}
 
 .warn{
-margin-top:25px;font-size:12px;color:#888;
-line-height:1.6;max-width:340px;margin-left:auto;margin-right:auto;
-background:rgba(0,0,0,.3);padding:15px;border-radius:12px;
-border-left:3px solid #f39c12;
+margin-top:25px;
+font-size:12px;
+color:#888;
+line-height:1.6;
+max-width:340px;
+margin-left:auto;
+margin-right:auto;
 }
 </style>
 </head>
 
 <body>
+
 <div class="container">
+
   <div class="logo-wrap">
     <div class="logo-gold">
       <img src="https://uploads.onecompiler.io/445e5df86/445tc7ue3/330.png" alt="Gujarati Trader">
@@ -181,8 +163,10 @@ border-left:3px solid #f39c12;
     </ul>
   </div>
 
-  <!-- ✅ ZERO INLINE JS - Pure data attributes -->
-  <a class="join-btn" href="#" data-channel="yjwXrw6B4lRhMjI1" id="joinTelegram">
+  <!-- ✅ SIMPLE REFERENCE LIKE BUTTON -->
+  <a href="https://t.me/+yjwXrw6B4lRhMjI1"
+     target="_blank"
+     class="join-btn subscribe-btn">
     🚀 JOIN OUR TELEGRAM NOW
   </a>
 
@@ -195,81 +179,37 @@ border-left:3px solid #f39c12;
 
   <div class="warn">
     ⚠️ Educational purpose only. No tips, no guarantees.<br>
-    Market participation involves risk. Trade responsibly.
+    Market participation involves risk.
   </div>
+
 </div>
 
-<!-- 🚫 BULLETPROOF - ZERO DUPLICATES FOREVER -->
+<!-- ================= TRACKING (REFERENCE LIKE) ================= -->
 <script>
-(function(){
-  'use strict';
-  
-  // Triple-layer duplicate protection
-  const SUB_KEY = 'gt_tg_subscribed';
-  const EVENT_PREFIX = 'gt_sub_';
-  
-  // Check if already subscribed (Layer 1: localStorage)
-  if(localStorage.getItem(SUB_KEY)) {
-    updateButtonState(true);
-    return;
+const PAGEVIEW_KEY = "gt_pageview_tracked";
+const SUBSCRIBE_KEY = "gt_subscribe_tracked";
+
+/* PageView – only once */
+if (!localStorage.getItem(PAGEVIEW_KEY)) {
+  fbq('track', 'PageView');
+  localStorage.setItem(PAGEVIEW_KEY, "true");
+}
+
+/* Telegram Join – only once */
+document.querySelector(".subscribe-btn").addEventListener("click", function () {
+
+  if (!localStorage.getItem(SUBSCRIBE_KEY)) {
+
+    fbq('track', 'Lead');
+    fbq('trackCustom', 'TelegramSubscribe', {
+      source: 'Landing Page',
+      platform: 'Telegram'
+    });
+
+    localStorage.setItem(SUBSCRIBE_KEY, "true");
   }
-  
-  // Check current session (Layer 2: sessionStorage)
-  const sessionEvent = sessionStorage.getItem('last_event_id');
-  if(sessionEvent && sessionEvent.startsWith(EVENT_PREFIX)) {
-    updateButtonState(true);
-    return;
-  }
-  
-  const joinBtn = document.getElementById('joinTelegram');
-  
-  joinBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    // FINAL CHECK before firing (Layer 3)
-    if(localStorage.getItem(SUB_KEY)) {
-      goToTelegram();
-      return;
-    }
-    
-    // Generate UNIQUE eventID (Meta deduplication)
-    const eventID = EVENT_PREFIX + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-    
-    // Fire Subscribe EXACTLY ONCE
-    if(typeof fbq !== 'undefined') {
-      fbq('track', 'Subscribe', {
-        value: 50,
-        currency: 'INR',
-        content_name: 'Gujarati Trader Telegram'
-      }, { eventID: eventID });
-    }
-    
-    // Lock forever across ALL sessions
-    localStorage.setItem(SUB_KEY, '1');
-    sessionStorage.setItem('last_event_id', eventID);
-    
-    updateButtonState(true);
-    goToTelegram();
-  });
-  
-  function updateButtonState(subscribed) {
-    const btn = document.getElementById('joinTelegram');
-    if(subscribed) {
-      btn.classList.add('subscribed');
-      btn.innerHTML = '✅ ALREADY SUBSCRIBED';
-    }
-  }
-  
-  function goToTelegram() {
-    const invite = document.getElementById('joinTelegram').dataset.channel;
-    window.open(`tg://join/?invite=${invite}`, '_blank');
-    setTimeout(() => {
-      window.open(`https://t.me/+${invite}`, '_blank');
-    }, 500);
-  }
-  
-})();
+
+});
 </script>
 
 </body>
